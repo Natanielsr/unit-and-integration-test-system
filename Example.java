@@ -10,19 +10,19 @@ public class Example extends TestController { //extends TestControler
                 "Test 01", //name of the test
                 InputFactory(1, 1), //inputs list
                 2); //output expected
-        Add(testObj01);//add the test to the testList
+        Add(test01);//add the test to the testList
 
-        Test testObj02 = TestFactory(
+        Test test02 = TestFactory(
                 "Test 02",
                 InputFactory(2, 2),
                 4);
-        Add(testObj02);
+        Add(test02);
 
-        Test testObj03 = TestFactory(
+        Test test03 = TestFactory(
                 "Test 03",
                 InputFactory(3,3),
                 6);
-        Add(testObj03);
+        Add(test03);
 
         List<Test> tests = RunTests(); //run the test
 
