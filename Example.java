@@ -4,29 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Example extends TestController { //extends TestControler
-    public void TestAll() {
+    public void start() {
 
         Test test01 = TestFactory(
                 "Test 01", //name of the test
                 InputFactory(1, 1), //inputs list
                 2); //output expected
-        Add(test01);//add the test to the testList
 
         Test test02 = TestFactory(
                 "Test 02",
                 InputFactory(2, 2),
                 4);
-        Add(test02);
 
         Test test03 = TestFactory(
                 "Test 03",
                 InputFactory(3,3),
                 6);
-        Add(test03);
 
-        List<Test> tests = RunTests(); //run the test
+        List<Test> tests = new ArrayList<>();
+        tests.add(test01);
+        tests.add(test02);
+        tests.add(test03);
 
-        PrintTests(tests); //print the results
+        testSetup(tests);
+        runTests();
+        printTests();
 
     }
 
