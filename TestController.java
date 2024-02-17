@@ -15,9 +15,9 @@ import java.util.List;
  * A class that implement a unit and integration test system;
  * extend this class to your class;
  * use Add() method to add your tests in a Test object type;
- * override Execute() method with your logic test and return the output result;
- * Use RunTests() to Run all tests and will return a testList with the outputs;
- * Use PrintTests() to see the result in a friendly view format;
+ * override execute() method with your logic test and return the output result;
+ * Use runTests() to Run all tests and will return a testList with the outputs;
+ * Use printTests() to see the result in a friendly view format;
  */
 public abstract class TestController {
 
