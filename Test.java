@@ -30,7 +30,11 @@ public class Test {
         return name;
     }
 
-    public boolean isPassed(){
-        return output.equals(expectedReturn);
+    public boolean isPassed()  {
+
+        if(!ArrayObject.isArrayObject(output))
+            return output.equals(expectedReturn);
+        else
+            return ArrayObject.equalArray(output, expectedReturn);
     }
 }
