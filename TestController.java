@@ -27,9 +27,11 @@ public abstract class TestController {
         testsList = new ArrayList<>();
     }
 
-    public void testSetup(List<Test> tests){
+    public void setTestList(List<Test> tests){
         this.testsList = tests;
     }
+
+    public abstract void start();
 
     /**Add Test to the testList**/
     public void Add(Test obj){
@@ -68,6 +70,21 @@ public abstract class TestController {
         );
     }
 
+    public static Test makeTest(
+            String name,
+            Object input,
+            Object expectedReturn){
+
+        List<Object> inputs = new ArrayList<>();
+        inputs.add(input);
+
+        return new Test(
+                name,
+                inputs,
+                expectedReturn
+        );
+    }
+
     /** a method thats print all your tests results with pass or did not pass **/
     public void printTests(){
         int failedCount = 0;
@@ -75,9 +92,21 @@ public abstract class TestController {
         int total = testsList.size();
         for(Test obj : testsList){
             Console.Log("Name Test: " + obj.getName());
-            Console.Log("Input: " + obj.getInputs());
-            Console.Log("Output: " + obj.getOutput());
-            Console.Log("Expected: " + obj.getExpectedReturn());
+
+            Console.LogInLine("Input: ");
+            Console.LogInLine(obj.getInputs());
+
+            Console.LogLn();
+
+            Console.LogInLine("Output: ");
+            Console.LogInLine(obj.getOutput());
+
+            Console.LogLn();
+
+            Console.LogInLine("Expected: ");
+            Console.LogInLine(obj.getExpectedReturn());
+
+            Console.LogLn();
 
             String passed;
             ConsoleColor color;
@@ -91,18 +120,18 @@ public abstract class TestController {
                 color = ConsoleColor.RED;
                 failedCount ++;
             }
-            Console.Log("Result: " + passed, color);
+            Console.LogColor("Result: " + passed, color);
 
             System.out.println();
         }
         ConsoleColor colorResult;
         if(failedCount > 0){
             colorResult = ConsoleColor.RED;
-            Console.Log("Finished with "+failedCount+" failed of "+total, colorResult);
+            Console.LogColor("Finished with "+failedCount+" failed of "+total, colorResult);
         }
         else{
             colorResult = ConsoleColor.GREEN;
-            Console.Log("Finished with "+successCount+" success of "+total, colorResult);
+            Console.LogColor("Finished with "+successCount+" success of "+total, colorResult);
         }
     }
 }
